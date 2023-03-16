@@ -7,8 +7,6 @@ const MyProvider = ( {children} ) => {
   const [dark, setDark] = useState("dark");
 
   const addLight = () => {
-    if (light === "light") {
-    }
     setLight("light");
     setDark("");
   };
