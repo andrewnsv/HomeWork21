@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, createContext } from "react";
 
-function App() {
+import SecondDiv from './components/SecondDiv';
+
+import "./App.css";
+
+export const MyContext = createContext();
+
+ function App() {
+  const [light, setLight] = useState("light");
+  const [dark, setDark] = useState("dark");
+
+  const addLight = () => {
+    if(light === "light"){}
+    setLight("light");
+    setDark("");
+  };
+  const addDark = () => {
+    setDark("dark");
+    setLight("");
+  };
+
+  // const ToggleHaldler = () => {
+  //  setLight(!light) 
+  // }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MyContext.Provider value={{ light }}>
+      <div className={`App`}>
+        <div className="buttons">
+          <button onClick={addLight}>Light</button>
+          <button onClick={addDark}>Dark</button>
+        </div>
+        <SecondDiv />
+      </div>
+    </MyContext.Provider>
   );
 }
 
-export default App;
+export default App
